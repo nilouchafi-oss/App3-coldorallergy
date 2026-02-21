@@ -29,10 +29,13 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 <html>
 
 
-   <head> 
-      <title>Cold or Allergies?</title>  
+   <head> --page title showen here--
+      <title>Cold or Allergies?</title> 
+	   --makes page responsive on mobile devices-
       <meta name="viewport" content="width=device-width, initial-scale=1">
+	   --app behaves like a mobile web app--
       <meta name="apple-mobile-web-app-capable" content="yes">
+	   --external styling libraries from w3.css--
       <link rel="stylesheet" href="w3.css">
       <link rel="stylesheet" href="w3-colors-flat.css">
 
@@ -54,12 +57,14 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
         function coldAdd(){
             cold_count = cold_count + 1;
         }
+	//function calculates and displays final results 
 		function showResults(){
+			//total number of answers
             var total = allergy_count + cold_count;
-
+//convert counts into percentages
             var allergyPercent = (allergy_count / total) * 100;
             var coldPercent = (cold_count / total) * 100;
-
+//display results inside the paragraph with id="results"
             document.getElementById("results").innerHTML =
                 "Allergy = " + allergyPercent.toFixed(0) + "% <br>" +
                 "Cold = " + coldPercent.toFixed(0) + "%";
@@ -70,10 +75,11 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 
 
 <style>	
+/*removes default page margin*/
 body {
      margin: 0em;
 }
-
+/*each question page styling*/
 .page {
     width: 100vw;
     height: 100vh;
@@ -84,7 +90,7 @@ body {
     z-index: 0;
     background-color: hsl(0,0%,100%);
 }
-
+/*when page is targeted using #id, show it*/
   .page:target {
     left: 0vw;
     z-index: 1;
@@ -92,20 +98,21 @@ body {
 </style>
    </head> 
 <body>
+	/*header section*/
 <div id="header" class="w3-container w3-flat-carrot">
 	<h1>Cold or Allergies?</h1>
 </div>
-	
+	/*intro page*/	
 <div id="content" class="w3-container">
 	<p>Are you feeling like you might have a cold but wonder if it is allergies. Answer a few short questions to find out!</p>
-	
+		/*button navigates to first question*/	
 	<a href="#one" class="w3-btn w3-black w3-round"> Get Started </a>
-	
+		/*disclaimer*/	
 	<p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
  	
 	<p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
-</div> <!-- adding this because it seems to be missing????? -->
-	
+</div> <!-- adding this because it seems to be missing????? *i dont know what this means* -->
+		/*question 1*/	
 <div class="page" id="one">
 	<div id="header" class="w3-container w3-flat-carrot">
 		<h1>Question 1</h1>
@@ -113,12 +120,14 @@ body {
 	
     	<div id="content" class="w3-container">
         <p>Are your eyes watery or itchy?</p>    
-			<a href="#two" onclick="allergyAdd();" class="w3-btn w3-black w3-round">Yes</a>
+				/*yes=allergy*/
+		<a href="#two" onclick="allergyAdd();" class="w3-btn w3-black w3-round">Yes</a>
+				/*no=cold*/
 <a href="#two" onclick="coldAdd();" class="w3-btn w3-black w3-round">No</a>
     	</div>
 	
 </div>
-
+-question 2-
 <div class="page" id="two">
 	<div class="w3-container w3-flat-carrot">
 		<h1>Question 2</h1>
@@ -126,10 +135,13 @@ body {
 	
 	<div id="content" class="w3-container">
 		<p>Do you have a fever?</p>
+		-yes=cold-
 		<a href="#three" onclick="coldAdd();" class="w3-btn w3-black w3-round">Yes</a>
+		-no=allergy-
 <a href="#three" onclick="allergyAdd();" class="w3-btn w3-black w3-round">No</a>
 	</div>
 </div>	
+	-question 3-
 <div class="page" id="three">
   <div class="w3-container w3-flat-carrot">
     <h1>Question 3</h1>
@@ -137,12 +149,13 @@ body {
 
   <div id="content" class="w3-container">
     <p>Do you have a sore throat?</p>
-
+-yes=cold-
     <a href="#four" onclick="coldAdd();" class="w3-btn w3-black w3-round">Yes</a>
+	  -no=allergy-
     <a href="#four" onclick="allergyAdd();" class="w3-btn w3-black w3-round">No</a>
   </div>
 </div>
-
+-question 4-
 <div class="page" id="four">
   <div class="w3-container w3-flat-carrot">
     <h1>Question 4</h1>
@@ -150,28 +163,32 @@ body {
 
   <div id="content" class="w3-container">
     <p>Are your symptoms seasonal or chronic?</p>
-
+-yes=allergy-
     <a href="#resultsPage" onclick="allergyAdd();" class="w3-btn w3-black w3-round">Yes</a>
+	  -no=cold-
     <a href="#resultsPage" onclick="coldAdd();" class="w3-btn w3-black w3-round">No</a>
   </div>
 </div>
-
+-results page-
 <div class="page" id="resultsPage">
   <div class="w3-container w3-flat-carrot">
     <h1>Results</h1>
   </div>
 
   <div id="content" class="w3-container">
+	  -results will be inserted here by Java-
     <p id="results">Click the button to see your results.</p>
-
+-button runs showResults()-
  <button type="button" onclick="showResults();" class="w3-btn w3-black w3-round">
   Show My Results
 </button>
 
     <br><br>
+	  -start over resets page-
     <a href="#" class="w3-btn w3-black w3-round">Start Over</a>
   </div>
 </div>
+	-footer-
 <footer class="w3-bottom w3-container w3-flat-carrot">
 	<p>DIY!Nilou Chafi!</p>
 </footer>
