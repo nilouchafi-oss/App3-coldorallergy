@@ -7,7 +7,7 @@ THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.
  
 Authors in chronological order of contribution:
 Tim Riedel
-Author 2
+Nilou Chafi
  
 Further Information:
 http://cns.utexas.edu/fri
@@ -17,16 +17,18 @@ Timothy Riedel
 triedel@utexas.edu
  
 Brief Description of Goal of Code:
-blah, blah, blah,
+Goal of the app is to create an interactive survey that users answer yes or no to calculate the probability of havig allergies vs a cold.
  
 Known Issues:
-blah, blah, blah, blah
+This is simplistic and not an actual medical evaluation
 
 https://www.w3schools.com/w3css/default.asp
 https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-file
 -->
 	<!DOCTYPE html>
 <html>
+
+-->
    <head> 
       <title>Cold or Allergies?</title>  
       <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,17 +39,18 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 
 
 
-<script>
+<script
+	// These variables store the number of answers pointing to each outcome
         var allergy_count = 0;
         var cold_count = 0;
 
-
+// Called when an answer suggests allergies
         function allergyAdd(){
             allergy_count = allergy_count + 1;
 		alert(allergy_count);
 
         }
-
+// Called when an answer suggests a cold
         function coldAdd(){
             cold_count = cold_count + 1;
         }
