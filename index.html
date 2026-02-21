@@ -25,15 +25,16 @@ blah, blah, blah, blah
 https://www.w3schools.com/w3css/default.asp
 https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-file
 -->
-	
+	<!DOCTYPE html>
+<html>
    <head> 
-      <title>Hello World</title>  
+      <title>Cold or Allergies?</title>  
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="apple-mobile-web-app-capable" content="yes">
       <link rel="stylesheet" href="w3.css">
       <link rel="stylesheet" href="w3-colors-flat.css">
-   </head> 
-<a href="#two" class="w3-btn w3-black"> Go to Page Two </a>
+
+
 
 
 <script>
@@ -50,13 +51,23 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
         function coldAdd(){
             cold_count = cold_count + 1;
         }
+		function showResults(){
+            var total = allergy_count + cold_count;
+
+            var allergyPercent = (allergy_count / total) * 100;
+            var coldPercent = (cold_count / total) * 100;
+
+            document.getElementById("results").innerHTML =
+                "Allergy = " + allergyPercent.toFixed(0) + "% <br>" +
+                "Cold = " + coldPercent.toFixed(0) + "%";
+        }
 
   </script>
 
 
 
 <style>	
-.body {
+body {
      margin: 0em;
 }
 
@@ -76,7 +87,7 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
     z-index: 1;
 }
 </style>
-
+   </head> 
 <body>
 <div id="header" class="w3-container w3-flat-carrot">
 	<h1>Cold or Allergies?</h1>
@@ -98,8 +109,11 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 	</div>
 	
     	<div id="content" class="w3-container">
-        <p>Put Question 1 content here.</p>    
+        <p>Are your eyes watery or itchy?</p>    
+			<a href="#two" onclick="allergyAdd();" class="w3-btn w3-black w3-round">Yes</a>
+<a href="#two" onclick="coldAdd();" class="w3-btn w3-black w3-round">No</a>
     	</div>
+	
 </div>
 
 <div class="page" id="two">
@@ -108,10 +122,53 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 	</div>
 	
 	<div id="content" class="w3-container">
-		<p>Content of page 2 goes here.</p>
+		<p>Do you have a fever?</p>
+		<a href="#three" onclick="coldAdd();" class="w3-btn w3-black w3-round">Yes</a>
+<a href="#three" onclick="allergyAdd();" class="w3-btn w3-black w3-round">No</a>
 	</div>
 </div>	
+<div class="page" id="three">
+  <div class="w3-container w3-flat-carrot">
+    <h1>Question 3</h1>
+  </div>
 
+  <div id="content" class="w3-container">
+    <p>Do you have a sore throat?</p>
+
+    <a href="#four" onclick="coldAdd();" class="w3-btn w3-black w3-round">Yes</a>
+    <a href="#four" onclick="allergyAdd();" class="w3-btn w3-black w3-round">No</a>
+  </div>
+</div>
+
+<div class="page" id="four">
+  <div class="w3-container w3-flat-carrot">
+    <h1>Question 4</h1>
+  </div>
+
+  <div id="content" class="w3-container">
+    <p>Are your symptoms seasonal or chronic?</p>
+
+    <a href="#resultsPage" onclick="allergyAdd();" class="w3-btn w3-black w3-round">Yes</a>
+    <a href="#resultsPage" onclick="coldAdd();" class="w3-btn w3-black w3-round">No</a>
+  </div>
+</div>
+
+<div class="page" id="resultsPage">
+  <div class="w3-container w3-flat-carrot">
+    <h1>Results</h1>
+  </div>
+
+  <div id="content" class="w3-container">
+    <p id="results">Click the button to see your results.</p>
+
+    <a href="#resultsPage" onclick="showResults();" class="w3-btn w3-grey w3-round">
+      Show My Results
+    </a>
+
+    <br><br>
+    <a href="#" class="w3-btn w3-black w3-round">Start Over</a>
+  </div>
+</div>
 <footer class="w3-bottom w3-container w3-flat-carrot">
 	<p>DIY!</p>
 </footer>
